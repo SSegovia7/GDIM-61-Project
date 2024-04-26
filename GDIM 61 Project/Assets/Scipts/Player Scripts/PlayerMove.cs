@@ -9,8 +9,14 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float m_speed;
     private float moveForce;
 
+    [SerializeField] private GameObject m_flashLight;
 
-    void Update()
+    private void Start()
+    {
+        m_flashLight.SetActive(false);
+    }
+
+    private void Update()
     {
         //Character moves side to side
         moveForce = Input.GetAxis("Horizontal");
@@ -19,7 +25,12 @@ public class PlayerMove : MonoBehaviour
         //FlashLight(not sure if to make this a different script)
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Debug.Log("HEY, LISTEN");
+            m_flashLight.SetActive(true);
+        }
+        
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        { 
+            m_flashLight.SetActive(false);
         }
     }
 }
