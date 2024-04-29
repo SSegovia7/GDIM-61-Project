@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 301185471}
   - component: {fileID: 301185470}
   m_Layer: 0
-  m_Name: PressEsc
+  m_Name: PressEsc_Sample
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1065825869}
-  offset: {x: 0, y: 0, z: -10}
+  offset: {x: 0, y: 2, z: -10}
   camSpeed: 10
 --- !u!1 &1065825865
 GameObject:
