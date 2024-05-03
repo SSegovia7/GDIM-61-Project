@@ -6,12 +6,13 @@ using UnityEngine;
 public class PlayerLight : MonoBehaviour
 {
     [SerializeField] private GameObject m_flashLight;
+    [SerializeField] private GameObject m_player;
+    [SerializeField] private float m_minRot;
+    [SerializeField] private float m_maxRot;
     private Transform m_lightTransform;
-    public GameObject m_player;
 
     private void Awake()
     {
-
         m_lightTransform = transform.Find("Arm");
     }
 
@@ -42,5 +43,16 @@ public class PlayerLight : MonoBehaviour
         difference.Normalize();
         float Z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         m_lightTransform.eulerAngles = new Vector3 (0f, 0f, Z);
+
+        limitRot();
+    }
+
+    private void limitRot()
+    {
+        Vector3 playerEulerAngles = m_lightTransform.rotation.eulerAngles;
+        playerEulerAngles.z = (playerEulerAngles.z > 180) ? playerEulerAngles.z - 360 : playerEulerAngles.z;
+        playerEulerAngles.z = Mathf.Clamp(playerEulerAngles.z, m_minRot, m_maxRot);
+
+        m_lightTransform.rotation = Quaternion.Euler(playerEulerAngles);
     }
 }
