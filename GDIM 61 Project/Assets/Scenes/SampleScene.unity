@@ -213,7 +213,7 @@ MonoBehaviour:
   m_minRot: -20
   m_maxRot: 90
   m_minLeftRot: -90
-  m_maxLeftRot: 90
+  m_maxLeftRot: 20
   m_lightTransform: {fileID: 525996795}
 --- !u!4 &9111465
 Transform:
