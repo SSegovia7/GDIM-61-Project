@@ -212,6 +212,8 @@ MonoBehaviour:
   m_player: {fileID: 9111461}
   m_minRot: -20
   m_maxRot: 90
+  m_minLeftRot: -90
+  m_maxLeftRot: 90
   m_lightTransform: {fileID: 525996795}
 --- !u!4 &9111465
 Transform:
@@ -271,7 +273,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rb: {fileID: 9111466}
   m_speed: 3
-  facingRight: 1
 --- !u!61 &9111469
 BoxCollider2D:
   m_ObjectHideFlags: 0

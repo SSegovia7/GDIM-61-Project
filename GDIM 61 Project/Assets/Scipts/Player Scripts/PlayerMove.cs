@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Rigidbody2D m_rb;
     [SerializeField] private float m_speed;
     private float inputHorizontal;
-    public bool facingRight = true;
+    public static bool facingRight = true;
 
     private void FixedUpdate()
     {

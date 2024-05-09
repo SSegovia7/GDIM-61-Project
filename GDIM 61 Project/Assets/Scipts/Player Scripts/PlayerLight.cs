@@ -9,6 +9,8 @@ public class PlayerLight : MonoBehaviour
     [SerializeField] private GameObject m_player;
     [SerializeField] private float m_minRot;
     [SerializeField] private float m_maxRot;
+    [SerializeField] private float m_minLeftRot;
+    [SerializeField] private float m_maxLeftRot;
     [SerializeField] private Transform m_lightTransform;
 
     private void Start()
@@ -42,7 +44,14 @@ public class PlayerLight : MonoBehaviour
         float Z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         m_lightTransform.eulerAngles = new Vector3 (0f, 0f, Z);
 
-        limitRot();
+        if (!PlayerMove.facingRight)
+        {
+            limitLeftRot();
+        }
+        else
+        {
+            limitRot();
+        }
     }
 
     private void limitRot()
@@ -50,6 +59,15 @@ public class PlayerLight : MonoBehaviour
         Vector3 playerEulerAngles = m_lightTransform.rotation.eulerAngles;
         playerEulerAngles.z = (playerEulerAngles.z > 180) ? playerEulerAngles.z - 360 : playerEulerAngles.z;
         playerEulerAngles.z = Mathf.Clamp(playerEulerAngles.z, m_minRot, m_maxRot);
+
+        m_lightTransform.rotation = Quaternion.Euler(playerEulerAngles);
+    }
+
+    private void limitLeftRot()
+    {
+        Vector3 playerEulerAngles = m_lightTransform.rotation.eulerAngles;
+        playerEulerAngles.z = (playerEulerAngles.z > 180) ? playerEulerAngles.z - 360 : playerEulerAngles.z;
+        playerEulerAngles.z = Mathf.Clamp(playerEulerAngles.z, m_minLeftRot, m_maxLeftRot);
 
         m_lightTransform.rotation = Quaternion.Euler(playerEulerAngles);
     }
