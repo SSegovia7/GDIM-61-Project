@@ -4,26 +4,51 @@ using UnityEngine;
 
 public class Mob : MonoBehaviour
 {
-    [SerializeField] private GameObject m_mob;
+    private mobState m_currentState = mobState.Wondering;
 
-    // Start is called before the first frame update
-    void Start()
+    private enum mobState
     {
-        
+        Wondering, 
+        Chasing, 
+        Retreat
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        switch (m_currentState)
+        {
+            case mobState.Wondering:
+                wonderingBehavior();
+                break;
+            case mobState.Chasing:
+                chasingBehavior();
+                break;
+            case mobState.Retreat:
+                retreatBehavior();
+                break;
+        }
     }
-
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("FlashLight"))
         {
-            //
+            Debug.Log("AH!");
         }
+    }
+
+    private void wonderingBehavior()
+    {
+
+    }
+
+    private void chasingBehavior()
+    {
+
+    }
+
+    private void retreatBehavior()
+    {
+
     }
 }
