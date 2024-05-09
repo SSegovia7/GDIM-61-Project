@@ -9,12 +9,7 @@ public class PlayerLight : MonoBehaviour
     [SerializeField] private GameObject m_player;
     [SerializeField] private float m_minRot;
     [SerializeField] private float m_maxRot;
-    private Transform m_lightTransform;
-
-    private void Awake()
-    {
-        m_lightTransform = transform.Find("Arm");
-    }
+    [SerializeField] private Transform m_lightTransform;
 
     private void Start()
     {
@@ -23,16 +18,19 @@ public class PlayerLight : MonoBehaviour
 
     private void Update()
     {
-        //FlashLight(not sure if to make this a different script)
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (!PauseMenu.m_isPaused)
         {
-            if (m_flashLight.activeInHierarchy == false)
+            //FlashLight(not sure if to make this a different script)
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                m_flashLight.SetActive(true);
-            }
-            else
-            {
-                m_flashLight.SetActive(false);
+                if (m_flashLight.activeInHierarchy == false)
+                {
+                    m_flashLight.SetActive(true);
+                }
+                else
+                {
+                    m_flashLight.SetActive(false);
+                }
             }
         }
     }
