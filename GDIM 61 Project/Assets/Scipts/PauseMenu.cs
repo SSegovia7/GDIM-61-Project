@@ -30,20 +30,20 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    private void ReturnToMain()
+    public void ReturnToMain()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
-    private void ResumeGame()
+    public void ResumeGame()
     {
         m_pauseMenu.SetActive(false);
         m_isPaused = false;
         Time.timeScale = 1f;
     }
 
-    private void PauseGame()
+    public void PauseGame()
     {
         m_pauseMenu.SetActive(true);
         m_isPaused = true;
