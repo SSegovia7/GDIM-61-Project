@@ -13,6 +13,8 @@ public class PlayerLight : MonoBehaviour
     [SerializeField] private float m_maxLeftRot;
     [SerializeField] private Transform m_lightTransform;
 
+    private float elapsedTime;
+
     private void Start()
     {
         m_flashLight.SetActive(false);
@@ -33,6 +35,11 @@ public class PlayerLight : MonoBehaviour
                 {
                     m_flashLight.SetActive(false);
                 }
+            }
+
+            if (m_flashLight.activeInHierarchy == true)
+            {
+                Debug.Log("wow");
             }
         }
     }

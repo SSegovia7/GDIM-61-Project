@@ -10,7 +10,7 @@ public class Mob : MonoBehaviour
     [SerializeField] private float m_targetDistance;
     private float m_distance;
 
-    private mobState m_currentState = mobState.Chasing;
+    private mobState m_currentState = mobState.Wondering;
 
     private enum mobState
     {
@@ -39,35 +39,31 @@ public class Mob : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("FlashLight"))
         {
-            Debug.Log("AH!");
+            m_currentState = mobState.Retreat;
         }
     }
 
     private void wonderingBehavior()
     {
 
-    }
-
-    private void chasingBehavior()
-    {
         m_distance = Vector2.Distance(transform.position, m_player.transform.position);
         Vector2 direction = m_player.transform.position - transform.position;
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        if(m_distance < m_targetDistance)
+        if (m_distance < m_targetDistance)
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, m_player.transform.position, m_speed * Time.deltaTime);
-            //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+            m_currentState = mobState.Chasing;
         }
-        /*else
-        {
-            m_currentState = mobState.Wondering;
-        }*/
+    }
+
+    private void chasingBehavior()
+    {
+        transform.position = Vector2.MoveTowards(this.transform.position, m_player.transform.position, m_speed * Time.deltaTime);
     }
 
     private void retreatBehavior()
     {
-
+        Destroy(this.gameObject);
     }
 }
