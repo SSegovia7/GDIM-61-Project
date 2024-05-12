@@ -37,6 +37,8 @@ public class PlayerLight : MonoBehaviour
         if (!PauseMenu.m_isPaused)
         {
             //FlashLight
+            m_batterySlider.value = m_currentTime;
+
             if (Input.GetKeyDown(KeyCode.Mouse0) && m_currentTime > 0)
             {
                 //m_activeTimer == true;
