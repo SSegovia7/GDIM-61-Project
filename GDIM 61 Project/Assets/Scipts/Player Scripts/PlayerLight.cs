@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerLight : MonoBehaviour
 {
+    //Flash Light Movement
     [SerializeField] private GameObject m_flashLight;
     [SerializeField] private GameObject m_player;
     [SerializeField] private float m_minRot;
@@ -13,20 +15,31 @@ public class PlayerLight : MonoBehaviour
     [SerializeField] private float m_maxLeftRot;
     [SerializeField] private Transform m_lightTransform;
 
-    private float elapsedTime;
+    //Flash Light Timer/Battery
+    [SerializeField] private Slider m_batterySlider;
+    [SerializeField] private int m_maxTime;
+    [SerializeField] private float m_currentTime;
+    //private bool m_activeTimer;
 
     private void Start()
     {
         m_flashLight.SetActive(false);
+
+        m_currentTime = m_maxTime;
+        if (m_currentTime == m_maxTime)
+        {
+            m_batterySlider.value = m_currentTime;
+        }
     }
 
     private void Update()
     {
         if (!PauseMenu.m_isPaused)
         {
-            //FlashLight(not sure if to make this a different script)
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            //FlashLight
+            if (Input.GetKeyDown(KeyCode.Mouse0) && m_currentTime > 0)
             {
+                //m_activeTimer == true;
                 if (m_flashLight.activeInHierarchy == false)
                 {
                     m_flashLight.SetActive(true);
@@ -36,10 +49,16 @@ public class PlayerLight : MonoBehaviour
                     m_flashLight.SetActive(false);
                 }
             }
-
-            if (m_flashLight.activeInHierarchy == true)
+            
+            if(m_flashLight.activeInHierarchy == true && m_currentTime > 0)
             {
-                Debug.Log("wow");
+                m_currentTime -= Time.deltaTime;
+            }
+
+            if (m_currentTime < 0)
+            {
+                m_currentTime = 0;
+                m_flashLight.SetActive(false);
             }
         }
     }
