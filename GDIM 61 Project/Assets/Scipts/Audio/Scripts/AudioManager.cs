@@ -9,6 +9,10 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField]
+    private float mainVolume;
+    private float currentVolume;
+
     public sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
@@ -31,25 +35,37 @@ public class AudioManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        musicSource = musicSource.GetComponent<AudioSource>();
+        
     }
 
     private void FixedUpdate()
     {
+        musicSource.volume = currentVolume;
+
         currentScene = SceneManager.GetActiveScene().name;
-        if(currentScene == "MainMenu" && titleMusicPlaying == false)
+        if(currentScene == "MainMenu")
         {
-            musicSource.volume = 0.2f;
-            PlayMusic("TitleMusic");
-            titleMusicPlaying = true;
-            ambiencePlaying = false;
+            currentVolume = mainVolume;
+
+            if (titleMusicPlaying == false)
+            {
+                musicSource = musicSource.GetComponent<AudioSource>();
+                PlayMusic("TitleMusic");
+                titleMusicPlaying = true;
+                ambiencePlaying = false;
+            }
         }
-        if (currentScene != "MainMenu" && ambiencePlaying == false)
+        if (currentScene != "MainMenu")
         {
-            musicSource.volume = 0.05f;
-            PlayMusic("Ambience");
-            ambiencePlaying = true;
-            titleMusicPlaying = false;
+            currentVolume = mainVolume / 4;
+
+            if(ambiencePlaying == false)
+            {
+                musicSource = musicSource.GetComponent<AudioSource>();
+                PlayMusic("Ambience");
+                ambiencePlaying = true;
+                titleMusicPlaying = false;
+            }
         }
     }
 
