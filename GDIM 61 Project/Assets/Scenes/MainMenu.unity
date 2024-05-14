@@ -669,11 +669,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254960137}
   m_CullTransparentMesh: 1
---- !u!1 &256985216 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2702022527240425320, guid: 8c78b6cd8980eb84295c67ca5e55d480, type: 3}
-  m_PrefabInstance: {fileID: 1413989968}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &296267126
 GameObject:
   m_ObjectHideFlags: 0
@@ -2180,7 +2175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a274bb40c4171d24b99548702e655efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioManager: {fileID: 256985216}
 --- !u!1001 &1413989968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2192,6 +2186,10 @@ PrefabInstance:
     - target: {fileID: 2702022527240425320, guid: 8c78b6cd8980eb84295c67ca5e55d480, type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7536973745641767302, guid: 8c78b6cd8980eb84295c67ca5e55d480, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8324229805109613859, guid: 8c78b6cd8980eb84295c67ca5e55d480, type: 3}
       propertyPath: m_LocalPosition.x

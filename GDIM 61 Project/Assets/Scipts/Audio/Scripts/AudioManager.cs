@@ -30,6 +30,8 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+
+        musicSource = musicSource.GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -37,12 +39,14 @@ public class AudioManager : MonoBehaviour
         currentScene = SceneManager.GetActiveScene().name;
         if(currentScene == "MainMenu" && titleMusicPlaying == false)
         {
+            musicSource.volume = 0.2f;
             PlayMusic("TitleMusic");
             titleMusicPlaying = true;
             ambiencePlaying = false;
         }
         if (currentScene != "MainMenu" && ambiencePlaying == false)
         {
+            musicSource.volume = 0.05f;
             PlayMusic("Ambience");
             ambiencePlaying = true;
             titleMusicPlaying = false;
