@@ -16,6 +16,9 @@ public class AudioManager : MonoBehaviour
 
     private string currentScene;
 
+    public bool titleMusicPlaying = false;
+    public bool ambiencePlaying = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -29,16 +32,20 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
+    private void FixedUpdate()
     {
         currentScene = SceneManager.GetActiveScene().name;
-        if(currentScene == "MainMenu")
+        if(currentScene == "MainMenu" && titleMusicPlaying == false)
         {
             PlayMusic("TitleMusic");
+            titleMusicPlaying = true;
+            ambiencePlaying = false;
         }
-        else
+        if (currentScene != "MainMenu" && ambiencePlaying == false)
         {
             PlayMusic("Ambience");
+            ambiencePlaying = true;
+            titleMusicPlaying = false;
         }
     }
 
@@ -62,17 +69,5 @@ public class AudioManager : MonoBehaviour
         {
             sfxSource.PlayOneShot(s.clip);
         }
-    }
-
-    public void ToLevel()
-    {
-        musicSource.Stop();
-        PlayMusic("Ambience");
-    }
-
-    public void ToMenu()
-    {
-        musicSource.Stop();
-        PlayMusic("TitleMusic");
     }
 }
