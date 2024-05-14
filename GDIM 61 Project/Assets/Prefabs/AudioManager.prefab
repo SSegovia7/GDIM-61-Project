@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -176,7 +176,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSounds:
   - name: Ambience
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 66ff4f3f5078be242b9aecd6ac3535aa, type: 3}
+  - name: TitleMusic
+    clip: {fileID: 8300000, guid: db52847dbde00cf4baba6e344abac814, type: 3}
   sfxSounds:
   - name: playerFootsteps
     clip: {fileID: 0}
@@ -228,7 +230,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0

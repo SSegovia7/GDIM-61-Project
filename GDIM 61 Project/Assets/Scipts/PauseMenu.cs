@@ -10,10 +10,17 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject m_pauseMenu;
     public static bool m_isPaused;
 
+    [SerializeField]
+    private GameObject audioManager;
+
+    private AudioManager audioScript;
+
     private void Start()
     {
         m_pauseMenu.SetActive(false);
         ResumeGame();
+
+        audioScript = audioManager.GetComponent<AudioManager>();
     }
 
     private void Update()
@@ -49,5 +56,10 @@ public class PauseMenu : MonoBehaviour
         m_pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         m_isPaused = true;
+    }
+
+    public void ChangeMusic()
+    {
+        audioScript.ToMenu();
     }
 }

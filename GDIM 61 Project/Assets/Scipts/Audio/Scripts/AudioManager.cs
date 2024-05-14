@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 
 public class AudioManager : MonoBehaviour
@@ -12,6 +13,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicSource, sfxSource;
 
     public static AudioManager instance;
+
+    private string currentScene;
 
     private void Awake()
     {
@@ -28,8 +31,17 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        PlayMusic("Ambience");
+        currentScene = SceneManager.GetActiveScene().name;
+        if(currentScene == "MainMenu")
+        {
+            PlayMusic("TitleMusic");
+        }
+        else
+        {
+            PlayMusic("Ambience");
+        }
     }
+
 
     public void PlayMusic(string name)
     {
@@ -50,5 +62,17 @@ public class AudioManager : MonoBehaviour
         {
             sfxSource.PlayOneShot(s.clip);
         }
+    }
+
+    public void ToLevel()
+    {
+        musicSource.Stop();
+        PlayMusic("Ambience");
+    }
+
+    public void ToMenu()
+    {
+        musicSource.Stop();
+        PlayMusic("TitleMusic");
     }
 }
