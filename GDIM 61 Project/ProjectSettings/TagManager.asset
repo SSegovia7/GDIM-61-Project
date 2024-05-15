@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FlashLight
   - Enemy
+  - Door
   layers:
   - Default
   - TransparentFX
