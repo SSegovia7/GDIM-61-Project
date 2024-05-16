@@ -40,7 +40,7 @@ public class PlayerLight : MonoBehaviour
 
     private void Update()
     {
-        if (!PauseMenu.m_isPaused)
+        if (!PauseDeathMenu.m_isPaused && !PlayerMove.m_playerDeath)
         {
             //FlashLight
             m_batterySlider.value = m_currentTime;

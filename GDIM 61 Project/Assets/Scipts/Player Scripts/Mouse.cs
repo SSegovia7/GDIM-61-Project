@@ -11,7 +11,7 @@ public class Mouse : MonoBehaviour
 
     private void Update()
     {
-        if (PauseMenu.m_isPaused)
+        if (PauseMenu.m_isPaused || PlayerMove.m_playerDeath)
         {
             Cursor.visible = true;
         }

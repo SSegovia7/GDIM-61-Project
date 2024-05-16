@@ -9,24 +9,27 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float m_speed;
     private float inputHorizontal;
     public static bool facingRight = true;
+    public static bool m_playerDeath = false;
 
     private void FixedUpdate()
     {
-        //Character moves side to side
-        inputHorizontal = Input.GetAxis("Horizontal");
-        m_rb.velocity = new Vector2(inputHorizontal * m_speed, m_rb.velocity.y);
-        
-        //Flipping Character
-        if (inputHorizontal > 0 && !facingRight)
+        if (!m_playerDeath)
         {
-            Flip();
-        }
+            //Character moves side to side
+            inputHorizontal = Input.GetAxis("Horizontal");
+            m_rb.velocity = new Vector2(inputHorizontal * m_speed, m_rb.velocity.y);
 
-        if (inputHorizontal < 0 && facingRight)
-        {
-            Flip();
-        }
+            //Flipping Character
+            if (inputHorizontal > 0 && !facingRight)
+            {
+                Flip();
+            }
 
+            if (inputHorizontal < 0 && facingRight)
+            {
+                Flip();
+            }
+        }
     }
 
     private void Flip()
@@ -36,5 +39,13 @@ public class PlayerMove : MonoBehaviour
         gameObject.transform.localScale = currentScale;
 
         facingRight = !facingRight;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            m_playerDeath = true;
+        }
     }
 }

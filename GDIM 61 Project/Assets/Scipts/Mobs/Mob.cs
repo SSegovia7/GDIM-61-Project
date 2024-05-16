@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Threading;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class Mob : MonoBehaviour
     [SerializeField] private float m_speed;
     [SerializeField] private float m_targetDistance;
     private float m_distance;
+
+    [SerializeField] private GameObject m_door;
 
     private mobState m_currentState = mobState.Wondering;
 
@@ -41,6 +44,11 @@ public class Mob : MonoBehaviour
         {
             m_currentState = mobState.Retreat;
         }
+        
+        if (collider.gameObject.CompareTag("Door") && m_currentState == mobState.Retreat)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void wonderingBehavior()
@@ -64,6 +72,11 @@ public class Mob : MonoBehaviour
 
     private void retreatBehavior()
     {
-        Destroy(this.gameObject);
+        m_distance = Vector2.Distance(transform.position, m_door.transform.position);
+        Vector2 newDirection = m_door.transform.position - transform.position;
+        newDirection.Normalize();
+        float angle = Mathf.Atan2(newDirection.y, newDirection.x) * Mathf.Rad2Deg;
+
+        transform.position = Vector2.MoveTowards(this.transform.position, m_door.transform.position, m_speed * Time.deltaTime);
     }
 }
