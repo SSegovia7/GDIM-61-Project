@@ -51,10 +51,12 @@ public class PlayerLight : MonoBehaviour
                 if (m_flashLight.activeInHierarchy == false)
                 {
                     m_flashLight.SetActive(true);
+                    audioScript.PlaySFX("flashOn");
                 }
                 else
                 {
                     m_flashLight.SetActive(false);
+                    audioScript.PlaySFX("flashOff");
                 }
             }
             
