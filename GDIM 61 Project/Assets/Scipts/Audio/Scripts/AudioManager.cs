@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour
     private float currentVolume;
 
     public sound[] musicSounds, sfxSounds;
-    public AudioSource musicSource, sfxSource;
+    public AudioSource musicSource, sfxSource, sfxLoop;
 
     public static AudioManager instance;
 
@@ -88,6 +88,28 @@ public class AudioManager : MonoBehaviour
         if (s != null)
         {
             sfxSource.PlayOneShot(s.clip);
+        }
+    }
+
+    public void PlayLoopSFX(string name)
+    {
+        sound s = Array.Find(sfxSounds, x => x.name == name);
+
+        if (s != null)
+        {
+            sfxLoop.clip = s.clip;
+            sfxLoop.Play();
+        }
+    }
+
+    public void StopLoopSFX(string name)
+    {
+        sound s = Array.Find(sfxSounds, x => x.name == name);
+
+        if (s != null)
+        {
+            sfxLoop.clip = s.clip;
+            sfxLoop.Stop();
         }
     }
 }

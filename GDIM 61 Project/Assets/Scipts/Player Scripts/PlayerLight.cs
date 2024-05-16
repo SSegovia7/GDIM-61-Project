@@ -52,11 +52,13 @@ public class PlayerLight : MonoBehaviour
                 {
                     m_flashLight.SetActive(true);
                     audioScript.PlaySFX("flashOn");
+                    //audioScript.PlayLoopSFX("flashBuzz");
                 }
                 else
                 {
                     m_flashLight.SetActive(false);
                     audioScript.PlaySFX("flashOff");
+                    //audioScript.StopLoopSFX("flashBuzz");
                 }
             }
             
