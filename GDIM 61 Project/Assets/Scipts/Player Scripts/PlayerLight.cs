@@ -21,8 +21,14 @@ public class PlayerLight : MonoBehaviour
     [SerializeField] private float m_currentTime;
     //private bool m_activeTimer;
 
+    //Flash Light Audio
+    [SerializeField] private GameObject audioManager;
+    private AudioManager audioScript;
+
     private void Start()
     {
+        audioScript = audioManager.GetComponent<AudioManager>();
+
         m_flashLight.SetActive(false);
 
         m_currentTime = m_maxTime;
