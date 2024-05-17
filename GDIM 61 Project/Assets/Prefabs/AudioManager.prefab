@@ -183,13 +183,18 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: db52847dbde00cf4baba6e344abac814, type: 3}
   sfxSounds:
   - name: playerFootsteps
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 892b8822284a2694aa5ce76970044c73, type: 3}
   - name: flashOn
     clip: {fileID: 8300000, guid: faff67da7cece164abaf992fa5125119, type: 3}
   - name: flashOff
     clip: {fileID: 8300000, guid: 903c7ccffa2e7524f9cc894e10351850, type: 3}
+  - name: flashBuzz
+    clip: {fileID: 8300000, guid: 08e2de15e834bde4a8680e00e8e4db40, type: 3}
+  - name: heartbeat
+    clip: {fileID: 8300000, guid: 77d44e7b6edb89d47859b5d0316fb406, type: 3}
   musicSource: {fileID: 7536973745641767302}
   sfxSource: {fileID: 8293400280746683543}
+  sfxLoop: {fileID: 5609899889270804894}
   titleMusicPlaying: 0
   ambiencePlaying: 0
 --- !u!1 &5918176823193637374

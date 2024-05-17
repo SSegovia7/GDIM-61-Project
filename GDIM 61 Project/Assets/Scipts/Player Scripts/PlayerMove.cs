@@ -11,9 +11,11 @@ public class PlayerMove : MonoBehaviour
     public static bool facingRight = true;
     public static bool m_playerDeath = false;
 
+    //Player Sounds
     private GameObject audioManager;
     private AudioManager audioScript;
     private Animator animatorPar;
+    //private bool notMoving = true;
 
 
     private void Start()
@@ -36,16 +38,33 @@ public class PlayerMove : MonoBehaviour
             if (inputHorizontal > 0 && !facingRight)
             {
                 Flip();
+
+                //Set footsteps active
+                //notMoving = false;
             }
 
             if (inputHorizontal < 0 && facingRight)
             {
                 Flip();
+
+                //Set footsteps active
+                //notMoving = false;
             }
 
             //Set animator parameters
             animatorPar.SetBool("WalkForward", inputHorizontal != 0);
         }
+
+        /*if (notMoving == false)
+        {
+            audioScript.PlayLoopSFX("playerFootsteps");
+            notMoving = true;
+        }
+        else
+        {
+            audioScript.StopLoopSFX("playerFootsteps");
+            notMoving = true;
+        }*/
     }
 
     private void Flip()
