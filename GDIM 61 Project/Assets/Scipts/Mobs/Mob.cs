@@ -14,6 +14,8 @@ public class Mob : MonoBehaviour
     [SerializeField] private GameObject m_door;
 
     private mobState m_currentState = mobState.Wondering;
+    //private Collider2D objectCollider;
+
 
     //For chase sfx
     private GameObject audioManager;
@@ -31,6 +33,8 @@ public class Mob : MonoBehaviour
     {
         audioManager = GameObject.Find("AudioManager");
         audioScript = audioManager.GetComponent<AudioManager>();
+        //objectCollider = objectCollider.GetComponent<Collider2D>();
+        //objectCollider.isTrigger = false;
     }
 
     private void Update()
@@ -67,6 +71,7 @@ public class Mob : MonoBehaviour
         if (collider.gameObject.CompareTag("FlashLight"))
         {
             m_currentState = mobState.Retreat;
+            //objectCollider.isTrigger = true;
         }
         
         if (collider.gameObject.CompareTag("Door"))
