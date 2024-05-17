@@ -11527,7 +11527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: {fileID: 9111461}
   m_speed: 4
-  m_targetDistance: 6
+  m_targetDistance: 10
   m_door: {fileID: 404060205}
 --- !u!4 &678221605
 Transform:
@@ -17464,7 +17464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: {fileID: 9111461}
   m_speed: 4
-  m_targetDistance: 6
+  m_targetDistance: 10
   m_door: {fileID: 404060205}
 --- !u!4 &1464353622
 Transform:
