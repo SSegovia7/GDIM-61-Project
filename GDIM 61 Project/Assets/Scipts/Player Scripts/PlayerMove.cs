@@ -11,6 +11,15 @@ public class PlayerMove : MonoBehaviour
     public static bool facingRight = true;
     public static bool m_playerDeath = false;
 
+    private GameObject audioManager;
+    private AudioManager audioScript;
+
+    private void Start()
+    {
+        audioManager = GameObject.Find("AudioManager");
+        audioScript = audioManager.GetComponent<AudioManager>();
+    }
+
     private void FixedUpdate()
     {
         if (!m_playerDeath)
@@ -46,6 +55,7 @@ public class PlayerMove : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             m_playerDeath = true;
+            audioScript.StopLoopSFX("heartbeat");
         }
     }
 }

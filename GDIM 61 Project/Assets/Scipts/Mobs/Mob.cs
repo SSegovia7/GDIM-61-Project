@@ -16,8 +16,9 @@ public class Mob : MonoBehaviour
     private mobState m_currentState = mobState.Wondering;
 
     //For chase sfx
-    [SerializeField] private GameObject audioManager;
+    private GameObject audioManager;
     private AudioManager audioScript;
+    private bool heartbeat;
 
     private enum mobState
     {
@@ -37,19 +38,29 @@ public class Mob : MonoBehaviour
         switch (m_currentState)
         {
             case mobState.Wondering:
-                //audioScript.StopLoopSFX("heartbeat");
                 wonderingBehavior();
                 break;
             case mobState.Chasing:
                 chasingBehavior();
-                //audioScript.PlayLoopSFX("heartbeat");
                 break;
             case mobState.Retreat:
                 retreatBehavior();
-                //audioScript.StopLoopSFX("heartbeat");
                 break;
         }
+
+        //Heartbeat
+        if(m_currentState == mobState.Chasing && heartbeat == false)
+        {
+            audioScript.PlayLoopSFX("heartbeat");
+            heartbeat = true;
+        }
+        if (m_currentState != mobState.Chasing && heartbeat == true)
+        {
+            audioScript.StopLoopSFX("heartbeat");
+            heartbeat = false;
+        }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collider)
     {

@@ -22,7 +22,7 @@ public class PlayerLight : MonoBehaviour
     //private bool m_activeTimer;
 
     //Flash Light Audio
-    [SerializeField] private GameObject audioManager;
+    private GameObject audioManager;
     private AudioManager audioScript;
 
     private void Start()
