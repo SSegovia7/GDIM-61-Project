@@ -18,6 +18,7 @@ public class PlayerMove : MonoBehaviour
     {
         audioManager = GameObject.Find("AudioManager");
         audioScript = audioManager.GetComponent<AudioManager>();
+        facingRight = true;
     }
 
     private void FixedUpdate()

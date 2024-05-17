@@ -12,7 +12,7 @@ public class PauseDeathMenu : MonoBehaviour
 
     [SerializeField] private GameObject m_deathMenu;
 
-    private void Start()
+    private void Awake()
     {
         m_pauseMenu.SetActive(false);
         m_deathMenu.SetActive(false);
@@ -51,7 +51,10 @@ public class PauseDeathMenu : MonoBehaviour
 
     public void ReturnToMain()
     {
+        m_deathMenu.SetActive(false);
         Time.timeScale = 1f;
+
+        PlayerMove.m_playerDeath = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
