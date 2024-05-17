@@ -27,6 +27,7 @@ public class PlayerLight : MonoBehaviour
 
     private void Start()
     {
+        audioManager = GameObject.Find("AudioManager");
         audioScript = audioManager.GetComponent<AudioManager>();
 
         m_flashLight.SetActive(false);
