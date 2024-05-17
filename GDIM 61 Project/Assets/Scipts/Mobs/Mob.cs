@@ -69,7 +69,7 @@ public class Mob : MonoBehaviour
             m_currentState = mobState.Retreat;
         }
         
-        if (collider.gameObject.CompareTag("Door") && m_currentState == mobState.Retreat)
+        if (collider.gameObject.CompareTag("Door"))
         {
             Destroy(this.gameObject);
         }
@@ -91,6 +91,15 @@ public class Mob : MonoBehaviour
     private void chasingBehavior()
     {
         transform.position = Vector2.MoveTowards(this.transform.position, m_player.transform.position, m_speed * Time.deltaTime);
+
+        if (transform.position.x < m_player.transform.position.x)
+        {
+            transform.localScale = new Vector2(-1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector2(1, 1);
+        }
     }
 
     private void retreatBehavior()
@@ -100,6 +109,15 @@ public class Mob : MonoBehaviour
         newDirection.Normalize();
         float angle = Mathf.Atan2(newDirection.y, newDirection.x) * Mathf.Rad2Deg;
 
-        transform.position = Vector2.MoveTowards(this.transform.position, m_door.transform.position, m_speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(this.transform.position, m_door.transform.position, 12 * Time.deltaTime);
+
+        if (transform.position.x < m_door.transform.position.x)
+        {
+            transform.localScale = new Vector2(-1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector2(1, 1);
+        }
     }
 }

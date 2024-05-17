@@ -96,7 +96,7 @@ public class PlayerLight : MonoBehaviour
     private void limitRot()
     {
         Vector3 playerEulerAngles = m_lightTransform.rotation.eulerAngles;
-        playerEulerAngles.z = (playerEulerAngles.z > 180) ? playerEulerAngles.z - 360 : playerEulerAngles.z;
+        playerEulerAngles.z = (playerEulerAngles.z > 310) ? playerEulerAngles.z - 360 : playerEulerAngles.z;
         playerEulerAngles.z = Mathf.Clamp(playerEulerAngles.z, m_minRot, m_maxRot);
 
         m_lightTransform.rotation = Quaternion.Euler(playerEulerAngles);
@@ -105,7 +105,7 @@ public class PlayerLight : MonoBehaviour
     private void limitLeftRot()
     {
         Vector3 playerEulerAngles = m_lightTransform.rotation.eulerAngles;
-        playerEulerAngles.z = (playerEulerAngles.z > 180) ? playerEulerAngles.z - 360 : playerEulerAngles.z;
+        playerEulerAngles.z = (playerEulerAngles.z > 90) ? playerEulerAngles.z - 360 : playerEulerAngles.z;
         playerEulerAngles.z = Mathf.Clamp(playerEulerAngles.z, m_minLeftRot, m_maxLeftRot);
 
         m_lightTransform.rotation = Quaternion.Euler(playerEulerAngles);

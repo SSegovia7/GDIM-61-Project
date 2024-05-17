@@ -6,12 +6,12 @@ public class Mouse : MonoBehaviour
 {
     private void Awake()
     {
-        Cursor.visible = true;
+        Cursor.visible = false;
     }
 
     private void Update()
     {
-        if (PauseMenu.m_isPaused || PlayerMove.m_playerDeath)
+        if (PauseMenu.m_isPaused || PlayerMove.m_playerDeath || Fridge.m_winState)
         {
             Cursor.visible = true;
         }
