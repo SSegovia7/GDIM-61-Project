@@ -218,7 +218,6 @@ MonoBehaviour:
   m_batterySlider: {fileID: 1630737170}
   m_maxTime: 10
   m_currentTime: 0
-  audioManager: {fileID: 2017460541}
 --- !u!4 &9111465
 Transform:
   m_ObjectHideFlags: 0
@@ -9020,7 +9019,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -9454,7 +9453,6 @@ MonoBehaviour:
   m_speed: 5
   m_targetDistance: 6
   m_door: {fileID: 404060205}
-  audioManager: {fileID: 2017460541}
 --- !u!50 &591672538
 Rigidbody2D:
   serializedVersion: 4
@@ -13259,11 +13257,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 530479984}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2017460541 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2702022527240425320, guid: 8c78b6cd8980eb84295c67ca5e55d480, type: 3}
-  m_PrefabInstance: {fileID: 1089898148}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2033957941
 GameObject:
   m_ObjectHideFlags: 0
