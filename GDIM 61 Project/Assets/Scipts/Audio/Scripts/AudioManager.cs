@@ -42,7 +42,8 @@ public class AudioManager : MonoBehaviour
         musicSource.volume = currentVolume;
 
         currentScene = SceneManager.GetActiveScene().name;
-        if(currentScene == "MainMenu")
+        Debug.Log(SceneManager.GetActiveScene().name);
+        if (currentScene == "MainMenu")
         {
             currentVolume = mainVolume;
 
