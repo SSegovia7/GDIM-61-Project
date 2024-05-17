@@ -15,6 +15,10 @@ public class Mob : MonoBehaviour
 
     private mobState m_currentState = mobState.Wondering;
 
+    //For chase sfx
+    [SerializeField] private GameObject audioManager;
+    private AudioManager audioScript;
+
     private enum mobState
     {
         Wondering, 
@@ -22,18 +26,27 @@ public class Mob : MonoBehaviour
         Retreat
     }
 
+    private void Start()
+    {
+        audioManager = GameObject.Find("AudioManager");
+        audioScript = audioManager.GetComponent<AudioManager>();
+    }
+
     private void Update()
     {
         switch (m_currentState)
         {
             case mobState.Wondering:
+                //audioScript.StopLoopSFX("heartbeat");
                 wonderingBehavior();
                 break;
             case mobState.Chasing:
                 chasingBehavior();
+                //audioScript.PlayLoopSFX("heartbeat");
                 break;
             case mobState.Retreat:
                 retreatBehavior();
+                //audioScript.StopLoopSFX("heartbeat");
                 break;
         }
     }
@@ -53,7 +66,6 @@ public class Mob : MonoBehaviour
 
     private void wonderingBehavior()
     {
-
         m_distance = Vector2.Distance(transform.position, m_player.transform.position);
         Vector2 direction = m_player.transform.position - transform.position;
         direction.Normalize();
