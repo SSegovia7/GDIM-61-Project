@@ -13,9 +13,12 @@ public class PlayerMove : MonoBehaviour
 
     private GameObject audioManager;
     private AudioManager audioScript;
+    private Animator animatorPar;
+
 
     private void Start()
     {
+        animatorPar = GetComponent<Animator>();
         audioManager = GameObject.Find("AudioManager");
         audioScript = audioManager.GetComponent<AudioManager>();
         facingRight = true;
@@ -39,6 +42,9 @@ public class PlayerMove : MonoBehaviour
             {
                 Flip();
             }
+
+            //Set animator parameters
+            animatorPar.SetBool("WalkForward", inputHorizontal != 0);
         }
     }
 
